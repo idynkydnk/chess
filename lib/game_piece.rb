@@ -1,9 +1,8 @@
 class GamePiece
-  attr_accessor :position, :possible_moves, :moves
+  attr_accessor :position, :possible_moves
 
   def initialize(position = [0,0])
     @position = position
-    @moves = []
     @possible_moves = []
   end
 

@@ -1,6 +1,7 @@
 require_relative "game_piece"
 
 class Knight < GamePiece
+  attr_accessor :moves
 
   def initialize(position = [0,0])
     @position = position

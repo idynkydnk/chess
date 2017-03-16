@@ -19,8 +19,15 @@ describe Board do
     it "places a piece on the grid A-H,1-8" do
       board = Board.new
       object = double("object")
-      board.place_piece(0, 0, object)
+      board.place_piece([0,0], object)
       expect(board.grid[0][0]).to eql(object)
+    end
+
+    it "places a piece from knight class" do
+      board = Board.new
+      piece = Knight.new
+      board.place_piece([3,5], piece) 
+      expect(board.grid[3][5]).to eql(piece)
     end
   end
 end
