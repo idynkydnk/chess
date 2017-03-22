@@ -14,8 +14,11 @@ describe Knight do
 
     it "should have 7,7 in list of possible moves" do
       x = Knight.new([6,5])
-      expect(x.possible_moves).to include([7,7])
-      expect(x.possible_moves).to include([5,3])
+      x.position = [1,1]
+      expect(x.possible_moves).to include([2,3])
+      expect(x.possible_moves).to include([3,2])
+      x.position = [4,4]
+      expect(x.possible_moves).to include([5,6])
     end
   end
 end
