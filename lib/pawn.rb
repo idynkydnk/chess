@@ -1,9 +1,15 @@
 require_relative "game_piece"
 
 class Pawn < GamePiece
+  attr_accessor :icon
 
   def initialize(color, position)
     super
+    if color == "white"
+      @icon = "♙"
+    else
+      @icon = "♟"
+    end
     @possible_moves = [] 
     calc_possible_moves
   end
