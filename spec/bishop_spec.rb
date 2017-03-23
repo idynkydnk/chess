@@ -3,7 +3,7 @@ require "bishop"
 describe Bishop do
   context "should have possible moves" do
     it "should check all moves" do
-      x = Bishop.new
+      x = Bishop.new("white",[3,3])
       x.position = [1,3]
       expect(x.possible_moves).to include([1,7])
       expect(x.possible_moves).to include([3,3])

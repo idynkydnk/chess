@@ -3,8 +3,8 @@ require_relative "game_piece"
 class Knight < GamePiece
   attr_accessor :moves
 
-  def initialize(position = [0,0])
-    @position = position
+  def initialize(color, position)
+    super
     @moves = [[1,2], [1,-2], [-1,2], [-1,-2], [2,1], [2,-1], [-2,1], [-2,-1]]
     @possible_moves = possible_moves
   end

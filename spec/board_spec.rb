@@ -25,7 +25,7 @@ describe Board do
 
     it "places a piece from knight class" do
       board = Board.new
-      piece = Knight.new
+      piece = Knight.new("white", [0,0])
       board.place_piece([3,5], piece) 
       expect(board.grid[3][5]).to eql(piece)
     end

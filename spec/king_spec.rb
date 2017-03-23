@@ -3,7 +3,7 @@ require "King"
 describe King do
   context "should have possible moves" do
     it "should check all positions" do
-      x = King.new
+      x = King.new("black", [2,3])
       x.position = [4,4]
       expect(x.possible_moves).to include([3,3])
       expect(x.possible_moves).to include([4,5])

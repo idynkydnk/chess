@@ -2,8 +2,8 @@ require_relative "game_piece"
 
 class Rook < GamePiece
 
-  def initialize(position = [0,0])
-    @position = position
+  def initialize(color, position)
+    super
     @possible_moves = [] 
     calc_possible_moves
   end

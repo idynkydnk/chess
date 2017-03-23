@@ -1,13 +1,15 @@
 class GamePiece
   attr_accessor :position, :possible_moves, :color
 
-  def initialize(color, position = [0,0])
-    if color == "yellow" || color == "red"
+  def initialize(color, position)
+    if color == "black" || color == "white"
       @color = color
     else
-      raise "game piece must be either yellow or red"
+      raise "game piece must be either black or white"
     end
-    @position = position
+    if location_valid?(position)
+      @position = position
+    end
     @possible_moves = []
   end
 
