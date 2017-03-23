@@ -17,35 +17,32 @@ class Pawn < GamePiece
   end
 
   def calc_possible_moves
-    up_moves
-    down_moves
-    diagonal_up
-    diagonal_down
-    diagonal_left_up
-    diagonal_left_down
+    if color == "black"
+      down_moves
+      diagonal_left_down
+      diagonal_down
+    elsif color == "white"
+      up_moves
+      diagonal_left_up
+      diagonal_up
+    end
   end
   
   private
 
-  def right_moves
-    if location_valid?([@position[0] + 1, @position[1]])
-      @possible_moves << [@position[0] + 1, @position[1]]
-    end
-  end
-
-  def left_moves
-    if location_valid?([@position[0] - 1, @position[1]])
-      @possible_moves << [@position[0] - 1, @position[1]]
-    end
-  end
-
   def up_moves
+    if @position[1] == 1
+      @possible_moves << [@position[0], @position[1] + 2]
+    end
     if location_valid?([@position[0], @position[1] + 1])
       @possible_moves << [@position[0], @position[1] + 1]
     end
   end
 
   def down_moves
+    if @position[1] == 6
+      @possible_moves << [@position[0], @position[1] - 2]
+    end
     if location_valid?([@position[0], @position[1] - 1])
       @possible_moves << [@position[0], @position[1] - 1]
     end

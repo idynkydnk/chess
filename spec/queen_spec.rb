@@ -70,5 +70,10 @@ describe Queen do
       expect(x.possible_moves).not_to include([2,3])
     end
 
+    it "should have color of white" do
+      x = Queen.new("white", [3,4])
+      expect(x.color).to eql("white")
+    end
+
   end
 end
