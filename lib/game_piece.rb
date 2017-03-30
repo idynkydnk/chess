@@ -1,5 +1,5 @@
 class GamePiece
-  attr_accessor :position, :possible_moves, :color
+  attr_accessor :position, :possible_moves, :color, :icon
 
   def initialize(color, position)
     if color == "black" || color == "white"

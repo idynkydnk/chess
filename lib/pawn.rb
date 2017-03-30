@@ -5,11 +5,7 @@ class Pawn < GamePiece
 
   def initialize(color, position)
     super
-    if color == "white"
-      @icon = "♙"
-    else
-      @icon = "♟"
-    end
+    color == "white" ? @icon = "♙" : @icon = "♟"
     @possible_moves = [] 
     calc_possible_moves
   end

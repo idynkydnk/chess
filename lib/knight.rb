@@ -5,6 +5,7 @@ class Knight < GamePiece
 
   def initialize(color, position)
     super
+    color == "white" ? @icon = "♘" : @icon = "♞"
     @moves = [[1,2], [1,-2], [-1,2], [-1,-2], [2,1], [2,-1], [-2,1], [-2,-1]]
     @possible_moves = possible_moves
   end

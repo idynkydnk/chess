@@ -4,6 +4,7 @@ class Rook < GamePiece
 
   def initialize(color, position)
     super
+    color == "white" ? @icon = "♖" : @icon = "♜"
     @possible_moves = [] 
     calc_possible_moves
   end
