@@ -5,7 +5,7 @@ class Bishop < GamePiece
 
   def initialize(color, position)
     super
-    color == "white" ? @icon = "♗ ".white.bg_black : @icon = "♝ ".black.bg_white
+    color == "white" ? @icon = "♝ ".white.bg_black : @icon = "♝ ".black.bg_white
     @possible_moves = [] 
     calc_possible_moves
   end
