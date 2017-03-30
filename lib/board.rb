@@ -69,7 +69,7 @@ class Board
     4.times do
       print " ".bg_black * 3
       if @grid[col][row] != " "  
-        print @grid[col][row].icon 
+        print @grid[col][row].icon.bg_black
       else
         print "  ".bg_black
       end
@@ -77,7 +77,7 @@ class Board
       col += 1
       print " ".bg_white * 3
       if @grid[col][row] != " "  
-        print @grid[col][row].icon 
+        print @grid[col][row].icon.bg_white
       else
         print "  ".bg_white
       end
@@ -93,7 +93,7 @@ class Board
     4.times do
       print " ".bg_white * 3
       if @grid[col][row] != " "  
-        print @grid[col][row].icon 
+        print @grid[col][row].icon.bg_white
       else
         print "  ".bg_white
       end
@@ -101,7 +101,7 @@ class Board
       col += 1
       print " ".bg_black * 3
       if @grid[col][row] != " "  
-        print @grid[col][row].icon 
+        print @grid[col][row].icon.bg_black
       else
         print "  ".bg_black
       end
