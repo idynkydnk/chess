@@ -1,11 +1,12 @@
 require_relative "game_piece"
+require_relative 'string'
 
 class Knight < GamePiece
   attr_accessor :moves
 
   def initialize(color, position)
     super
-    color == "white" ? @icon = "♘" : @icon = "♞"
+    color == "white" ? @icon = "♘ ".white.bg_black : @icon = "♞ ".black.bg_white
     @moves = [[1,2], [1,-2], [-1,2], [-1,-2], [2,1], [2,-1], [-2,1], [-2,-1]]
     @possible_moves = possible_moves
   end

@@ -62,6 +62,8 @@ class Board
     end
   end
 
+  private
+
   def center_black_row(row)
     col = 0
     4.times do
@@ -69,17 +71,17 @@ class Board
       if @grid[col][row] != " "  
         print @grid[col][row].icon 
       else
-        print " ".bg_black
+        print "  ".bg_black
       end
-      print " ".bg_black * 3
+      print " ".bg_black * 2
       col += 1
       print " ".bg_white * 3
       if @grid[col][row] != " "  
         print @grid[col][row].icon 
       else
-        print " ".bg_white
+        print "  ".bg_white
       end
-      print " ".bg_white * 3
+      print " ".bg_white * 2
       col += 1
     end
     puts
@@ -93,17 +95,17 @@ class Board
       if @grid[col][row] != " "  
         print @grid[col][row].icon 
       else
-        print " ".bg_white
+        print "  ".bg_white
       end
-      print " ".bg_white * 3
+      print " ".bg_white * 2
       col += 1
       print " ".bg_black * 3
       if @grid[col][row] != " "  
         print @grid[col][row].icon 
       else
-        print " ".bg_black
+        print "  ".bg_black
       end
-      print " ".bg_black * 3
+      print " ".bg_black * 2
       col += 1
     end
     puts
