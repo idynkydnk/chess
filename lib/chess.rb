@@ -12,13 +12,14 @@ class Chess
   end
 
   def play
-    @board.print_board
-    exit
+
+@board.print_board
+exit
+
     get_players
     pick_colors
     colors_message
     loop do
-      clear_screen
       @board.print_board
       turn_message
       get_move
@@ -74,16 +75,18 @@ class Chess
   end
 
   def get_players
-    print "Enter first players name: "
-    @player_one.name = gets.chomp
-    print "Enter second players name: "
-    @player_two.name = gets.chomp
+    # print "Enter first players name: "
+    # @player_one.name = gets.chomp
+    # print "Enter second players name: "
+    # @player_two.name = gets.chomp
+    @player_one.name = "Kyle"
+    @player_two.name = "Quy"
     puts
   end
   
   def pick_colors
     @player_one.color = ["white", "black"].sample
-    @player_one.color == "white" ? @player_two.color = "black" : @player_two.color = "white"
+    @player_one.color == "white" ? @player_two.color = "blue" : @player_two.color = "red"
     puts
   end
 
