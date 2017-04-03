@@ -23,8 +23,12 @@ class Board
     row_color = "black"
     print_letters
     7.downto(0) do |row|
+      print "  "
       row_color == "black" ? print_black_row : print_white_row
+      print (row + 1).to_s + " "
       row_color == "black" ? center_black_row(row) : center_white_row(row)
+      puts " " + (row + 1).to_s
+      print "  "
       row_color == "black" ? print_black_row : print_white_row
       row_color == "black" ? row_color = "white" : row_color = "black"
     end
@@ -68,6 +72,7 @@ class Board
 
   def print_letters
     letters = ('A'..'H').to_a
+    print "  "
     8.times do
       print "   " + letters.shift + "   "
     end
@@ -94,10 +99,8 @@ class Board
       print " ".bg_white * 2
       col += 1
     end
-    puts
   end
 
- 
   def center_white_row(row)
     col = 0
     4.times do
@@ -118,7 +121,6 @@ class Board
       print " ".bg_black * 2
       col += 1
     end
-    puts
   end
 
   def print_black_row

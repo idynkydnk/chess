@@ -48,7 +48,6 @@ class Chess
     puts "Enter your move (C3,D5):"
     move = gets.chomp
     check_move(move) ? make_move(move) : get_move 
-    puts
   end
 
   def check_move(move)
