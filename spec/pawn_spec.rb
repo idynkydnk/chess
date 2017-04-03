@@ -21,15 +21,4 @@ describe Pawn do
     end
   end
 
-  describe ".icon" do
-    it "should get the correct icon, white" do
-      x = Pawn.new("white", [3,4])
-      expect(x.icon).to eql("♙ ".white.bg_black)
-    end
-
-    it "should get the correct icon, black" do
-      x = Pawn.new("black", [3,4])
-      expect(x.icon).to eql("♟ ".black.bg_white)
-    end
-  end
 end

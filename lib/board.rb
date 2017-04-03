@@ -15,6 +15,24 @@ class Board
     set_default_board
   end
 
+  def place_piece(loc, piece)
+    @grid[loc[0]][loc[1]] = piece
+  end
+
+  def print_board
+    row_color = "black"
+    print_letters
+    7.downto(0) do |row|
+      row_color == "black" ? print_black_row : print_white_row
+      row_color == "black" ? center_black_row(row) : center_white_row(row)
+      row_color == "black" ? print_black_row : print_white_row
+      row_color == "black" ? row_color = "white" : row_color = "black"
+    end
+    print_letters
+  end
+
+  private
+
   def set_default_board
     set_white_pieces
     set_black_pieces
@@ -47,24 +65,6 @@ class Board
       place_piece([x,6], Pawn.new("black", [x,6]))
     end
   end
-
-  def place_piece(loc, piece)
-    @grid[loc[0]][loc[1]] = piece
-  end
-
-  def print_board
-    row_color = "black"
-    print_letters
-    7.downto(0) do |row|
-      row_color == "black" ? print_black_row : print_white_row
-      row_color == "black" ? center_black_row(row) : center_white_row(row)
-      row_color == "black" ? print_black_row : print_white_row
-      row_color == "black" ? row_color = "white" : row_color = "black"
-    end
-    print_letters
-  end
-
-  private
 
   def print_letters
     letters = ('A'..'H').to_a

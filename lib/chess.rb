@@ -13,8 +13,6 @@ class Chess
 
   def play
 
-@board.print_board
-exit
 
     get_players
     pick_colors
@@ -40,30 +38,22 @@ exit
     puts "#{@current_player.name} is the winner!"
     puts
   end
-  
+
   def turn_message
     puts "#{@current_player.name}: It's your turn"
     puts
   end
-  
+
   def get_move
-    puts "Enter your move 1-7:"
+    puts "Enter your move (C3,D5):"
     move = gets.chomp
-    move = move.to_i
-    if check_move(move)
-      make_move(move)
-    end
+    check_move(move) ? make_move(move) : get_move 
     puts
   end
 
   def check_move(move)
-    if move >= 1 && move <= 7 
-      return true
-    else 
-      puts "You can't do that!"
-      puts
-      get_move
-    end
+    regex = /[a-hA-H][1-8],[a-hA-H][1-8]$/
+    move =~ regex ? true : false
   end
 
   def make_move(move)
