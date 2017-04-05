@@ -26,6 +26,7 @@ describe Board do
       expect(board.grid[5][0]).to be_a Bishop
       expect(board.grid[5][1]).to be_a Pawn
       expect(board.grid[2][1]).to be_a Pawn
+      expect(board.grid[0][1]).to be_a Pawn
     end
   end
 
@@ -55,6 +56,16 @@ describe Board do
       board.place_piece([3,5], piece) 
       expect(board.grid[3][5]).to eql(piece)
       expect(board.grid[3][5]).to be_a Knight 
+    end
+  end
+
+  describe ".move_piece" do
+    it "moves piece from one position to another" do
+      x = Chess.new
+      x.player_one.color = "white"
+      x.board.move_piece("A2,A3", x.player_one)
+      expect(x.board.grid[0][2]).to be_a Pawn
+      expect(x.board.grid[0][1]).to eql(" ")
     end
   end
 end

@@ -19,44 +19,45 @@ class Rook < GamePiece
   end
 
   def calc_possible_moves
-    diagonal_up
-    diagonal_down
-    diagonal_left_up
-    diagonal_left_down
+    right_moves
+    left_moves
+    up_moves
+    down_moves
   end
   
   private
 
-  def diagonal_up
+  def right_moves
     x = 1
-    while location_valid?([@position[0] + x, @position[1] + x])
-      @possible_moves << [@position[0] + x, @position[1] + x]
+    while location_valid?([@position[0] + x, @position[1]])
+      @possible_moves << [@position[0] + x, @position[1]]
       x += 1
     end
   end
 
-  def diagonal_down
+  def left_moves
     x = 1
-    while location_valid?([@position[0] + x, @position[1] - x])
-      @possible_moves << [@position[0] + x, @position[1] - x]
+    while location_valid?([@position[0] - x, @position[1]])
+      @possible_moves << [@position[0] - x, @position[1]]
       x += 1
     end
   end
 
-  def diagonal_left_up
+  def up_moves
     x = 1
-    while location_valid?([@position[0] - x, @position[1] + x])
-      @possible_moves << [@position[0] - x, @position[1] + x]
+    while location_valid?([@position[0], @position[1] + x])
+      @possible_moves << [@position[0], @position[1] + x]
       x += 1
     end
   end
 
-  def diagonal_left_down
+  def down_moves
     x = 1
-    while location_valid?([@position[0] - x, @position[1] - x])
-      @possible_moves << [@position[0] - x, @position[1] - x]
+    while location_valid?([@position[0], @position[1] - x])
+      @possible_moves << [@position[0], @position[1] - x]
       x += 1
     end
   end
 
 end
+

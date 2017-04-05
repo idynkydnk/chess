@@ -12,8 +12,6 @@ class Chess
   end
 
   def play
-
-
     get_players
     pick_colors
     colors_message
@@ -22,6 +20,7 @@ class Chess
       turn_message
       get_move
       switch_players
+      clear_screen
     end
   end
 
@@ -56,7 +55,7 @@ class Chess
   end
 
   def make_move(move)
-    @board.place_piece(move, @current_player)
+    @board.move_piece(move, @current_player)
   end
 
   def switch_players
@@ -70,18 +69,21 @@ class Chess
     # @player_two.name = gets.chomp
     @player_one.name = "Kyle"
     @player_two.name = "Quy"
-    puts
   end
   
   def pick_colors
     @player_one.color = ["white", "black"].sample
-    @player_one.color == "white" ? @player_two.color = "blue" : @player_two.color = "red"
-    puts
+    @player_one.color == "white" ? @player_two.color = "black" : @player_two.color = "white"
   end
 
   def colors_message
-    puts "#{@player_one.name}'s color is #{@player_one.color}"
-    puts "#{@player_two.name}'s color is #{@player_two.color}"
+    if @player_one.color == "white"
+      puts "#{@player_one.name}'s color is red"
+      puts "#{@player_two.name}'s color is blue"
+    else
+      puts "#{@player_one.name}'s color is blue"
+      puts "#{@player_two.name}'s color is red"
+    end
     puts
   end
 

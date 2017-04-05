@@ -15,6 +15,23 @@ class Board
     set_default_board
   end
 
+  def move_piece(move, player)
+    start_x = move[0].ord - 65
+    start_y = move[1].to_i - 1
+    end_loc = [move[3].ord - 65, move[4].to_i - 1]
+    if @grid[start_x][start_y].color == player.color &&
+        @grid[start_x][start_y].possible_moves.include?(end_loc)
+      @grid[end_loc[0]][end_loc[1]] = @grid[start_x][start_y]
+      @grid[start_x][start_y] = " "
+    end
+
+#    start_loc = move first two
+#    end_loc = move last two
+#    if grid[start_loc].color == player.color
+#      if end_loc is in grid[start_loc].possible_locations
+#    end 
+  end
+
   def place_piece(loc, piece)
     @grid[loc[0]][loc[1]] = piece
   end
@@ -138,4 +155,5 @@ class Board
     end
     puts
   end
+
 end
