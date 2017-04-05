@@ -22,6 +22,7 @@ class Board
     if @grid[start_x][start_y].color == player.color &&
         @grid[start_x][start_y].possible_moves.include?(end_loc)
       @grid[end_loc[0]][end_loc[1]] = @grid[start_x][start_y]
+      @grid[end_loc[0]][end_loc[1]].position = end_loc
       @grid[start_x][start_y] = " "
     end
 
