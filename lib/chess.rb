@@ -14,9 +14,9 @@ class Chess
   def play
     get_players
     pick_colors
-    colors_message
     loop do
       @board.print_board
+      colors_message
       turn_message
       get_move
       switch_players
@@ -46,7 +46,7 @@ class Chess
   def get_move
     puts "Enter your move (C3,D5):"
     move = gets.chomp
-    check_move(move) ? make_move(move) : get_move 
+    check_move(move) ? make_move(move.upcase) : get_move 
   end
 
   def check_move(move)
