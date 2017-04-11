@@ -76,4 +76,12 @@ describe Queen do
     end
 
   end
+
+  describe ".clear_path?" do
+    it "should return false when path is blocked" do
+      game = Chess.new
+      x = Queen.new("white", [3,0])
+      expect(x.clear_path?(game.board, 3, 3)).to be(false)
+    end
+  end
 end

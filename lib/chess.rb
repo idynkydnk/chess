@@ -24,6 +24,13 @@ class Chess
     end
   end
 
+  def check_move(move)
+    regex = /[a-hA-H][1-8],[a-hA-H][1-8]$/
+    move =~ regex ? true : false
+  end
+
+  private
+
   def draw_message
     puts "It's a draw!"
     puts
@@ -45,13 +52,8 @@ class Chess
 
   def get_move
     puts "Enter your move (C3,D5):"
-    move = gets.chomp
-    check_move(move) ? make_move(move.upcase) : get_move 
-  end
-
-  def check_move(move)
-    regex = /[a-hA-H][1-8],[a-hA-H][1-8]$/
-    move =~ regex ? true : false
+    move = gets.chomp.upcase
+    check_move(move) ? make_move(move) : get_move 
   end
 
   def make_move(move)
@@ -67,6 +69,7 @@ class Chess
     # @player_one.name = gets.chomp
     # print "Enter second players name: "
     # @player_two.name = gets.chomp
+    # it's not like anyone will be playing this
     @player_one.name = "Kyle"
     @player_two.name = "Quy"
   end

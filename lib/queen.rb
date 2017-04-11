@@ -29,7 +29,21 @@ class Queen < GamePiece
     diagonal_left_down
   end
   
+  def clear_path?(board, end_x, end_y)
+    return clear_up_path?(board, end_x, end_y)
+  end
+
   private
+
+  def clear_up_path?(board, end_x, end_y)
+    y = @position[1] + 1
+    until y == end_y
+      if board.grid[end_x][y] == " "
+        return false
+      end
+      y += 1
+    end
+  end
 
   def right_moves
     x = 1
