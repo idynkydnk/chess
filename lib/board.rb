@@ -15,6 +15,22 @@ class Board
     set_default_board
   end
 
+  def check_move(move, player)
+    start_x = move[0].ord - 65
+    start_y = move[1].to_i - 1
+    end_x = move[3].ord - 65
+    end_y = move[4].to_i - 1
+    piece = @grid[start_x][start_y]
+    if piece.color == player.color &&
+        legal_move?(start_x, start_y, end_x, end_y) &&
+        piece.clear_path?(self, end_x, end_y)
+      return true
+    else 
+      return false
+    end
+ 
+  end
+
   def move_piece(move, player)
     start_x = move[0].ord - 65
     start_y = move[1].to_i - 1

@@ -31,6 +31,9 @@ class Chess
 
   private
 
+  def check_board_move(move)
+    @board.check_move(move, @current_player)
+  end
   def draw_message
     puts "It's a draw!"
     puts
@@ -53,7 +56,11 @@ class Chess
   def get_move
     puts "Enter your move (C3,D5):"
     move = gets.chomp.upcase
-    check_move(move) ? make_move(move) : get_move 
+    if check_move(move) && check_board_move(move)
+      make_move(move)
+    else
+      get_move 
+    end
   end
 
   def make_move(move)

@@ -24,6 +24,12 @@ class Bishop < GamePiece
     diagonal_left_up
     diagonal_left_down
   end
+
+  def clear_path?(grid, end_x, end_y)
+    if end_x > @position[0] && end_y > @position[1]
+      return clear_up_right_path?(grid, end_x, end_y)
+    end
+  end
   
   private
 
