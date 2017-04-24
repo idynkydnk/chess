@@ -23,7 +23,7 @@ class Board
     piece = @grid[start_x][start_y]
     if piece.color == player.color &&
         legal_move?(start_x, start_y, end_x, end_y) &&
-        piece.clear_path?(self, end_x, end_y)
+        piece.clear_path?(@grid, end_x, end_y)
       return true
     else 
       return false
