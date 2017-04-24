@@ -110,5 +110,33 @@ describe Queen do
       expect(x.clear_path?(game.board, 3, 3)).to be(true)
     end
 
+    it "should return true when path is clear going right" do
+      game = Chess.new
+      x = game.board.grid[3][0]
+      game.board.place_piece([3,5], x)
+      x.position = [3,5]
+      expect(x.clear_path?(game.board, 6, 5)).to be(true)
+    end
+
+    it "should return false when path is blocked going right" do
+      game = Chess.new
+      x = game.board.grid[3][0]
+      expect(x.clear_path?(game.board, 6, 0)).to be(false)
+    end
+
+    it "should return false when path is blocked going left" do
+      game = Chess.new
+      x = game.board.grid[3][0]
+      expect(x.clear_path?(game.board, 1, 0)).to be(false)
+    end
+
+    it "should return true when path is clear going left" do
+      game = Chess.new
+      x = game.board.grid[3][0]
+      game.board.place_piece([3,5], x)
+      x.position = [3,5]
+      expect(x.clear_path?(game.board, 1, 5)).to be(true)
+    end
+
   end
 end

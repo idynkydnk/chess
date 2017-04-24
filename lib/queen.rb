@@ -34,6 +34,10 @@ class Queen < GamePiece
       return clear_up_path?(board, end_x, end_y)
     elsif end_x == @position[0] && end_y < @position[1]
       return clear_down_path?(board, end_x, end_y)
+    elsif end_x > @position[0] && end_y == @position[1]
+      return clear_right_path?(board, end_x, end_y)
+    elsif end_x < @position[0] && end_y == @position[1]
+      return clear_left_path?(board, end_x, end_y)
     end
   end
 
@@ -51,6 +55,22 @@ class Queen < GamePiece
     y = @position[1] - 1
     until y == end_y
       board.grid[end_x][y] == " " ? y -= 1 : (return false)
+    end
+    return true
+  end
+
+  def clear_right_path?(board, end_x, end_y)
+    x = @position[0] + 1
+    until x == end_x
+      board.grid[x][end_y] == " " ? x += 1 : (return false)
+    end
+    return true
+  end
+
+  def clear_left_path?(board, end_x, end_y)
+    x = @position[0] - 1
+    until x == end_x
+      board.grid[x][end_y] == " " ? x -= 1 : (return false)
     end
     return true
   end
