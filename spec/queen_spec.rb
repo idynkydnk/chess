@@ -78,10 +78,23 @@ describe Queen do
   end
 
   describe ".clear_path?" do
-    it "should return false when path is blocked" do
+    it "should return false when path is blocked going up" do
       game = Chess.new
-      x = Queen.new("white", [3,0])
-      expect(x.clear_path?(game.board, 3, 3)).to be(false)
+      x = game.board.grid[3][0]
+      game.board.place_piece([3,3], x)
+      x.position = [3,3]
+      expect(x.clear_path?(game.board, 3, 8)).to be(false)
     end
   end
+
+  describe ".clear_path?" do
+    it "should return false when path is blocked going up" do
+      game = Chess.new
+      x = game.board.grid[3][0]
+      game.board.place_piece([3,3], x)
+      x.position = [3,3]
+      expect(x.clear_path?(game.board, 3, 5)).to be(true)
+    end
+  end
+
 end
