@@ -30,10 +30,10 @@ class Queen < GamePiece
   end
   
   def clear_path?(board, end_x, end_y)
-    if clear_up_path?(board, end_x, end_y)
-      return true
-    else 
-      return false
+    if end_x == @position[0] && end_y > @position[1]
+      return clear_up_path?(board, end_x, end_y)
+    elsif end_x == @position[0] && end_y < @position[1]
+      return clear_down_path?(board, end_x, end_y)
     end
   end
 
@@ -50,31 +50,9 @@ class Queen < GamePiece
   def clear_down_path?(board, end_x, end_y)
     y = @position[1] - 1
     until y == end_y
-      if board.grid[end_x][y] == " "
-        return false
-      end
-      y -= 1
+      board.grid[end_x][y] == " " ? y -= 1 : (return false)
     end
-  end
-
-  def clear_left_path?(board, end_x, end_y)
-    y = @position[1] + 1
-    until y == end_y
-      if board.grid[end_x][y] == " "
-        return false
-      end
-      y += 1
-    end
-  end
-
-  def clear_right_path?(board, end_x, end_y)
-    y = @position[1] + 1
-    until y == end_y
-      if board.grid[end_x][y] == " "
-        return false
-      end
-      y += 1
-    end
+    return true
   end
 
   def right_moves
