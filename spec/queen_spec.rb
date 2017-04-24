@@ -138,5 +138,69 @@ describe Queen do
       expect(x.clear_path?(game.board, 1, 5)).to be(true)
     end
 
+    it "should return true when path is clear going diagonally up right" do
+      game = Chess.new
+      x = game.board.grid[3][0]
+      game.board.place_piece([0,2], x)
+      x.position = [0,2]
+      expect(x.clear_path?(game.board, 2, 4)).to be(true)
+    end
+
+    it "should return false when path is blocked going diagonally up right" do
+      game = Chess.new
+      x = game.board.grid[3][0]
+      game.board.place_piece([0,2], x)
+      x.position = [0,2]
+      expect(x.clear_path?(game.board, 5, 7)).to be(false)
+    end
+
+    it "should return true when path is clear going diagonally up left" do
+      game = Chess.new
+      x = game.board.grid[3][0]
+      game.board.place_piece([4,2], x)
+      x.position = [4,2]
+      expect(x.clear_path?(game.board, 2, 4)).to be(true)
+    end
+
+    it "should return false when path is blocked going diagonally up left" do
+      game = Chess.new
+      x = game.board.grid[3][0]
+      game.board.place_piece([4,4], x)
+      x.position = [4,4]
+      expect(x.clear_path?(game.board, 1, 7)).to be(false)
+    end
+
+    it "should return false when path is blocked going diagonally down left" do
+      game = Chess.new
+      x = game.board.grid[3][0]
+      game.board.place_piece([4,4], x)
+      x.position = [4,4]
+      expect(x.clear_path?(game.board, 0, 0)).to be(false)
+    end
+
+    it "should return true when path is clear going diagonally down left" do
+      game = Chess.new
+      x = game.board.grid[3][0]
+      game.board.place_piece([4,4], x)
+      x.position = [4,4]
+      expect(x.clear_path?(game.board, 2, 2)).to be(true)
+    end
+
+    it "should return true when path is clear going diagonally down right" do
+      game = Chess.new
+      x = game.board.grid[3][0]
+      game.board.place_piece([4,4], x)
+      x.position = [4,4]
+      expect(x.clear_path?(game.board, 6, 2)).to be(true)
+    end
+
+    it "should return false when path is blocked going diagonally down right" do
+      game = Chess.new
+      x = game.board.grid[3][0]
+      game.board.place_piece([2,4], x)
+      x.position = [2,4]
+      expect(x.clear_path?(game.board, 6, 0)).to be(false)
+    end
+
   end
 end
