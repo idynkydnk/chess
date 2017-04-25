@@ -24,6 +24,18 @@ class Rook < GamePiece
     up_moves
     down_moves
   end
+
+  def clear_path?(grid, end_x, end_y)
+    if end_x == @position[0] && end_y > @position[1]
+      return clear_up_path?(grid, end_x, end_y)
+    elsif end_x == @position[0] && end_y < @position[1]
+      return clear_down_path?(grid, end_x, end_y)
+    elsif end_x > @position[0] && end_y == @position[1]
+      return clear_right_path?(grid, end_x, end_y)
+    elsif end_x < @position[0] && end_y == @position[1]
+      return clear_left_path?(grid, end_x, end_y)
+    end
+  end
   
   private
 
@@ -58,6 +70,39 @@ class Rook < GamePiece
       x += 1
     end
   end
+
+  def clear_up_path?(grid, end_x, end_y)
+    y = @position[1] + 1
+    until y == end_y
+      grid[end_x][y] == " " ? y += 1 : (return false)
+    end
+    return true
+  end
+
+  def clear_down_path?(grid, end_x, end_y)
+    y = @position[1] - 1
+    until y == end_y
+      grid[end_x][y] == " " ? y -= 1 : (return false)
+    end
+    return true
+  end
+
+  def clear_right_path?(grid, end_x, end_y)
+    x = @position[0] + 1
+    until x == end_x
+      grid[x][end_y] == " " ? x += 1 : (return false)
+    end
+    return true
+  end
+
+  def clear_left_path?(grid, end_x, end_y)
+    x = @position[0] - 1
+    until x == end_x
+      grid[x][end_y] == " " ? x -= 1 : (return false)
+    end
+    return true
+  end
+
 
 end
 
