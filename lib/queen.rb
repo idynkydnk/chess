@@ -87,7 +87,7 @@ class Queen < GamePiece
     x = @position[0] + 1
     y = @position[1] + 1
     until x == end_x
-      if grid[end_x][end_y] == " " 
+      if grid[x][y] == " " 
        x += 1 
        y += 1
       else
@@ -101,7 +101,7 @@ class Queen < GamePiece
     x = @position[0] - 1
     y = @position[1] + 1
     until x == end_x
-      if grid[end_x][end_y] == " " 
+      if grid[x][y] == " " 
        x -= 1 
        y += 1
       else
@@ -115,7 +115,7 @@ class Queen < GamePiece
     x = @position[0] - 1
     y = @position[1] - 1
     until x == end_x
-      if grid[end_x][end_y] == " " 
+      if grid[x][y] == " " 
        x -= 1 
        y -= 1
       else
@@ -129,7 +129,7 @@ class Queen < GamePiece
     x = @position[0] + 1
     y = @position[1] - 1
     until x == end_x
-      if grid[end_x][end_y] == " " 
+      if grid[x][y] == " " 
        x += 1 
        y -= 1
       else

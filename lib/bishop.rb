@@ -28,10 +28,72 @@ class Bishop < GamePiece
   def clear_path?(grid, end_x, end_y)
     if end_x > @position[0] && end_y > @position[1]
       return clear_up_right_path?(grid, end_x, end_y)
+    elsif end_x < @position[0] && end_y > @position[1]
+      return clear_up_left_path?(grid, end_x, end_y)
+    elsif end_x < @position[0] && end_y < @position[1]
+      return clear_down_left_path?(grid, end_x, end_y)
+    elsif end_x > @position[0] && end_y < @position[1]
+      return clear_down_right_path?(grid, end_x, end_y)
     end
   end
   
   private
+
+  def clear_up_right_path?(grid, end_x, end_y)
+    x = @position[0] + 1
+    y = @position[1] + 1
+    until x == end_x
+      if grid[x][y] == " " 
+       x += 1 
+       y += 1
+      else
+        return false
+      end
+    end
+    return true
+  end
+
+  def clear_up_left_path?(grid, end_x, end_y)
+    x = @position[0] - 1
+    y = @position[1] + 1
+    until x == end_x
+      if grid[x][y] == " " 
+       x -= 1 
+       y += 1
+      else
+        return false
+      end
+    end
+    return true
+  end
+
+  def clear_down_left_path?(grid, end_x, end_y)
+    x = @position[0] - 1
+    y = @position[1] - 1
+    until x == end_x
+      if grid[x][y] == " " 
+       x -= 1 
+       y -= 1
+      else
+        return false
+      end
+    end
+    return true
+  end
+
+  def clear_down_right_path?(grid, end_x, end_y)
+    x = @position[0] + 1
+    y = @position[1] - 1
+    until x == end_x
+      if grid[x][y] == " " 
+       x += 1 
+       y -= 1
+      else
+        return false
+      end
+    end
+    return true
+  end
 
   def diagonal_up
     x = 1
