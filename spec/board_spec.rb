@@ -114,5 +114,18 @@ describe Board do
       expect(x.board.check?(x.player_one)).to be(true)
     end 
 
+    it "if in check from a move, should return false" do
+      x = Chess.new
+      x.player_one.color = "white"
+      x.player_two.color = "black"
+      x.board.move_piece("E2,E4", x.player_one)
+      x.board.move_piece("E1,E2", x.player_one)
+      x.board.move_piece("E2,E3", x.player_one)
+      x.board.move_piece("E3,F3", x.player_one)
+      x.board.move_piece("D7,D6", x.player_two)
+      x.board.move_piece("F3,G3", x.player_one)
+      x.board.print_board
+      expect(x.board.check_move("G3,H3", x.player_one)).to be(false)
+    end 
   end
 end

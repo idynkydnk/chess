@@ -24,11 +24,20 @@ class Board
     if piece.color == player.color &&
         legal_move?(start_x, start_y, end_x, end_y) &&
         piece.clear_path?(@grid, end_x, end_y)
-      return true
+      @grid[end_x][end_y] = @grid[start_x][start_y]
+      @grid[end_x][end_y].position = [end_x, end_y]
+      @grid[start_x][start_y] = " "
+      if check?(player) 
+        a = false
+        undo_move(move, player)
+      else
+        a = true
+        undo_move(move, player)
+      end
     else 
       return false
     end
- 
+    return a
   end
 
   def move_piece(move, player)
@@ -79,6 +88,16 @@ class Board
   end
 
   private
+
+  def undo_move(move, player)
+    start_x = move[3].ord - 65
+    start_y = move[4].to_i - 1
+    end_x = move[0].ord - 65
+    end_y = move[1].to_i - 1
+    @grid[end_x][end_y] = @grid[start_x][start_y]
+    @grid[end_x][end_y].position = [end_x, end_y]
+    @grid[start_x][start_y] = " "
+  end
 
   def each_square
     8.times do |x|
