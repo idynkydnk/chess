@@ -97,7 +97,6 @@ describe Board do
       x.board.move_piece("A3,E3", x.player_one)
       x.board.move_piece("E7,E5", x.player_two)
       x.board.move_piece("E3,E5", x.player_one)
-      x.board.print_board
       expect(x.board.check?(x.player_two)).to be(true)
     end 
 
@@ -112,7 +111,6 @@ describe Board do
       x.board.move_piece("D7,D6", x.player_two)
       x.board.move_piece("F3,G3", x.player_one)
       x.board.move_piece("G3,H3", x.player_one)
-      x.board.print_board
       expect(x.board.check?(x.player_one)).to be(true)
     end 
 

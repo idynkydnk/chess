@@ -36,14 +36,9 @@ class Board
     start_y = move[1].to_i - 1
     end_x = move[3].ord - 65
     end_y = move[4].to_i - 1
-    piece = @grid[start_x][start_y]
-    if piece.color == player.color &&
-        legal_move?(start_x, start_y, end_x, end_y) &&
-        piece.clear_path?(@grid, end_x, end_y)
-      @grid[end_x][end_y] = @grid[start_x][start_y]
-      @grid[end_x][end_y].position = [end_x, end_y]
-      @grid[start_x][start_y] = " "
-    end
+    @grid[end_x][end_y] = @grid[start_x][start_y]
+    @grid[end_x][end_y].position = [end_x, end_y]
+    @grid[start_x][start_y] = " "
   end
 
   def place_piece(loc, piece)
