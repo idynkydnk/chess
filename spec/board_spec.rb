@@ -68,4 +68,26 @@ describe Board do
       expect(x.board.grid[0][1]).to eql(" ")
     end
   end
+
+  describe ".check?" do
+
+    it "should return false when not in check" do
+      x = Chess.new
+      player = x.player_one
+      player.color = "white"
+      expect(x.board.check?(player)).to be(false)
+    end 
+
+    it "should return true when in check" do
+      x = Chess.new
+      player = x.player_one
+      player.color = "black"
+      piece = Queen.new("white", [0,0])
+      x.board.place_piece([4,6], piece)
+      piece.position = [4,6]
+      x.board.print_board
+      expect(x.board.check?(player)).to be(true)
+    end 
+
+  end
 end

@@ -66,7 +66,42 @@ class Board
     print_letters
   end
 
+  def check?(player)
+    king_loc = find_king(player)
+    each_square do |loc|
+      if @grid[loc[0]][loc[1]] == " "
+        next
+      elsif @grid[loc[0]][loc[1]].color == player.color
+        next
+      else
+        if legal_move?(loc[0], loc[1], king_loc[0], king_loc[1]) &&
+            @grid[loc[0]][loc[1]].clear_path?(@grid, king_loc[0], king_loc[1])
+          return true
+        end
+      end
+    end
+    return false
+  end
+
   private
+
+  def each_square
+    8.times do |x|
+      8.times do |y|
+        yield [x,y]
+      end
+    end
+  end
+
+  def find_king(player)
+    each_square do |loc|
+      if @grid[loc[0]][loc[1]].is_a? King  
+        if @grid[loc[0]][loc[1]].color == player.color
+          return [loc[0],loc[1]]
+        end
+      end
+    end
+  end
 
   def legal_move?(start_x, start_y, end_x, end_y)
     color = @grid[start_x][start_y].color

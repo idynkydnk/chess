@@ -34,6 +34,7 @@ class Chess
   def check_board_move(move)
     @board.check_move(move, @current_player)
   end
+
   def draw_message
     puts "It's a draw!"
     puts
@@ -87,6 +88,7 @@ class Chess
   end
 
   def colors_message
+    puts
     if @player_one.color == "white"
       puts "#{@player_one.name}'s color is red"
       puts "#{@player_two.name}'s color is blue"
