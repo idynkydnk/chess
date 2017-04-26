@@ -85,8 +85,35 @@ describe Board do
       piece = Queen.new("white", [0,0])
       x.board.place_piece([4,6], piece)
       piece.position = [4,6]
-      x.board.print_board
       expect(x.board.check?(player)).to be(true)
+    end 
+
+    it "should return true when in check" do
+      x = Chess.new
+      x.player_one.color = "white"
+      x.player_two.color = "black"
+      x.board.move_piece("A2,A4", x.player_one)
+      x.board.move_piece("A1,A3", x.player_one)
+      x.board.move_piece("A3,E3", x.player_one)
+      x.board.move_piece("E7,E5", x.player_two)
+      x.board.move_piece("E3,E5", x.player_one)
+      x.board.print_board
+      expect(x.board.check?(x.player_two)).to be(true)
+    end 
+
+    it "should return true when in check after the king moves around" do
+      x = Chess.new
+      x.player_one.color = "white"
+      x.player_two.color = "black"
+      x.board.move_piece("E2,E4", x.player_one)
+      x.board.move_piece("E1,E2", x.player_one)
+      x.board.move_piece("E2,E3", x.player_one)
+      x.board.move_piece("E3,F3", x.player_one)
+      x.board.move_piece("D7,D6", x.player_two)
+      x.board.move_piece("F3,G3", x.player_one)
+      x.board.move_piece("G3,H3", x.player_one)
+      x.board.print_board
+      expect(x.board.check?(x.player_one)).to be(true)
     end 
 
   end
