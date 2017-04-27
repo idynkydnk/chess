@@ -21,6 +21,7 @@ class Board
     end_x = move[3].ord - 65
     end_y = move[4].to_i - 1
     piece = @grid[start_x][start_y]
+    end_piece = @grid[end_x][end_y]
     if piece.color == player.color &&
         legal_move?(start_x, start_y, end_x, end_y) &&
         piece.clear_path?(@grid, end_x, end_y)
@@ -29,10 +30,10 @@ class Board
       @grid[start_x][start_y] = " "
       if check?(player) 
         a = false
-        undo_move(move, player)
+        undo_move(move, player, end_piece)
       else
         a = true
-        undo_move(move, player)
+        undo_move(move, player, end_piece)
       end
     else 
       return false
@@ -70,6 +71,25 @@ class Board
     print_letters
   end
 
+  def checkmate?(player)
+    moves = 0
+    each_square do |loc|
+      if current_player?(player, loc)
+        @grid[loc[0]][loc[1]].possible_moves.each do |possible_move|
+          start_x = (loc[0] + 65).chr
+          start_y = (loc[1] + 1).to_s
+          end_x = (possible_move[0] + 65).chr
+          end_y = (possible_move[1] + 1).to_s
+          if check_move((start_x + start_y + "," + end_x + end_y), player)
+            moves += 1
+          end
+
+        end 
+      end
+    end
+    moves == 0 ? (return true) : (return false)
+  end
+
   def check?(player)
     king_loc = find_king(player)
     each_square do |loc|
@@ -89,14 +109,24 @@ class Board
 
   private
 
-  def undo_move(move, player)
+  def current_player?(player, loc)
+    if @grid[loc[0]][loc[1]] == " "
+      return false
+    elsif @grid[loc[0]][loc[1]].color == player.color
+      return true
+    else
+      return false
+    end 
+  end
+
+  def undo_move(move, player, piece)
     start_x = move[3].ord - 65
     start_y = move[4].to_i - 1
     end_x = move[0].ord - 65
     end_y = move[1].to_i - 1
     @grid[end_x][end_y] = @grid[start_x][start_y]
     @grid[end_x][end_y].position = [end_x, end_y]
-    @grid[start_x][start_y] = " "
+    @grid[start_x][start_y] = piece 
   end
 
   def each_square

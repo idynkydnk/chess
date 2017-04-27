@@ -124,8 +124,56 @@ describe Board do
       x.board.move_piece("E3,F3", x.player_one)
       x.board.move_piece("D7,D6", x.player_two)
       x.board.move_piece("F3,G3", x.player_one)
-      x.board.print_board
       expect(x.board.check_move("G3,H3", x.player_one)).to be(false)
     end 
+
+    it "if in check from a move, should return false" do
+      x = Chess.new
+      x.player_one.color = "white"
+      x.player_two.color = "black"
+      x.board.move_piece("E2,E4", x.player_one)
+      x.board.move_piece("D7,D5", x.player_two)
+      x.board.move_piece("D5,E4", x.player_two)
+      x.board.move_piece("E1,E2", x.player_one)
+      x.board.move_piece("E2,E3", x.player_one)
+      x.board.move_piece("E3,E4", x.player_one)
+      x.board.move_piece("E4,E5", x.player_one)
+      x.board.move_piece("E5,E6", x.player_one)
+      x.board.move_piece("E6,E7", x.player_one)
+      x.board.move_piece("E7,D7", x.player_one)
+      expect(x.board.check_move("D7,E8", x.player_one)).to be(false)
+
+    end 
   end
+
+  describe ".checkmate?" do
+
+    it "should return false when player has a legal move" do
+      x = Chess.new
+      player = x.player_one
+      player.color = "white"
+      #expect(x.board.checkmate?(player)).to be(false)
+    end 
+
+    it "should return true when player is in check on every possible move" do
+      x = Chess.new
+      x.player_one.color = "white"
+      x.player_two.color = "black"
+      x.board.move_piece("E2,E4", x.player_one)
+      x.board.move_piece("D7,D5", x.player_two)
+      x.board.move_piece("D5,E4", x.player_two)
+      x.board.move_piece("E1,E2", x.player_one)
+      x.board.move_piece("E2,E3", x.player_one)
+      x.board.move_piece("E3,E4", x.player_one)
+      x.board.move_piece("E4,E5", x.player_one)
+      x.board.move_piece("E5,E6", x.player_one)
+      x.board.move_piece("E6,E7", x.player_one)
+      x.board.move_piece("E7,D7", x.player_one)
+      expect(x.board.check_move("D7,E8", x.player_one)).to be(false)
+      x.board.print_board
+      expect(x.board.checkmate?(x.player_one)).to be(true)
+    end 
+
+  end
+
 end
