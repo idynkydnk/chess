@@ -169,11 +169,52 @@ describe Board do
       x.board.move_piece("E5,E6", x.player_one)
       x.board.move_piece("E6,E7", x.player_one)
       x.board.move_piece("E7,D7", x.player_one)
-      expect(x.board.check_move("D7,E8", x.player_one)).to be(false)
-      x.board.print_board
       expect(x.board.checkmate?(x.player_one)).to be(true)
     end 
 
+    it "should return true when player is in check on every possible move" do
+      x = Chess.new
+      x.player_one.color = "white"
+      x.player_two.color = "black"
+      x.board.clear_board
+      x.board.place_piece([2,7], King.new("black", [2,7]))
+      x.board.place_piece([2,5], Queen.new("white", [2,5]))
+      x.board.place_piece([6,7], Rook.new("white", [6,7]))
+      expect(x.board.checkmate?(x.player_two)).to be(true)
+    end 
+
+    it "should return true when player is in check on every possible move" do
+      x = Chess.new
+      x.player_one.color = "white"
+      x.player_two.color = "black"
+      x.board.clear_board
+      x.board.place_piece([0,0], King.new("white", [0,0]))
+      x.board.place_piece([0,2], Queen.new("black", [0,2]))
+      x.board.place_piece([1,2], Rook.new("black", [1,2]))
+      expect(x.board.checkmate?(x.player_one)).to be(true)
+    end 
+
+    it "should return false when player is not in check on every move" do
+      x = Chess.new
+      x.player_one.color = "white"
+      x.player_two.color = "black"
+      x.board.clear_board
+      x.board.place_piece([0,0], King.new("white", [0,0]))
+      x.board.place_piece([0,2], Queen.new("black", [0,2]))
+      x.board.place_piece([1,2], Bishop.new("black", [1,2]))
+      expect(x.board.checkmate?(x.player_one)).to be(false)
+    end 
+
+  end
+
+  describe ".clear_board" do
+    context "a clear board method to make tests easier" do 
+      it "should clear all pieces off the board" do
+        x = Board.new
+        x.clear_board
+        expect(x.grid[0][0]).to eql(" ")
+      end
+    end
   end
 
 end

@@ -107,6 +107,12 @@ class Board
     return false
   end
 
+  def clear_board
+    each_square do |square|
+      @grid[square[0]][square[1]] = " "
+    end
+  end
+
   private
 
   def current_player?(player, loc)
@@ -261,5 +267,6 @@ class Board
     end
     puts
   end
+
 
 end
