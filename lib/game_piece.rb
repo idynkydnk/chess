@@ -5,7 +5,7 @@ class GamePiece
     if color == "black" || color == "white"
       @color = color
     else
-      raise "game piece must be either black or white"
+      raise "game piece must be either blue or red"
     end
     if location_valid?(position)
       @position = position

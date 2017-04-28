@@ -152,7 +152,7 @@ describe Board do
       x = Chess.new
       player = x.player_one
       player.color = "white"
-      #expect(x.board.checkmate?(player)).to be(false)
+      expect(x.board.checkmate?(player)).to be(false)
     end 
 
     it "should return true when player is in check on every possible move" do

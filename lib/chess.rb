@@ -16,8 +16,10 @@ class Chess
     pick_colors
     loop do
       @board.print_board
+      winner_message if @board.checkmate?(@current_player) 
       colors_message
       turn_message
+      check_message if @board.check?(@current_player)
       get_move
       switch_players
       clear_screen
@@ -30,6 +32,11 @@ class Chess
   end
 
   private
+
+  def check_message
+    puts "You're in check!"
+    puts
+  end
 
   def check_board_move(move)
     @board.check_move(move, @current_player)
@@ -45,12 +52,16 @@ class Chess
   end
 
   def winner_message
+    switch_players
+    puts "Checkmate!"
     puts "#{@current_player.name} is the winner!"
     puts
+    exit
   end
 
   def turn_message
-    puts "#{@current_player.name}: It's your turn"
+    @current_player.color == "white" ? color = "red" : color = "blue"
+    puts "#{@current_player.name}: It's your turn(#{color})"
     puts
   end
 
