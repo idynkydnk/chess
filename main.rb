@@ -13,26 +13,34 @@ class Game
       game = Chess.new
       game.play
     when "2"
-      puts Dir.entries("games")
-      puts "Just enter the game number, or \"c\" to cancel."
-      game_number = gets.chomp
-      exit if game_number == "c"
-      stored_state = YAML.load(File.read("games/game#{game_number}"))
-      game = Chess.new
-      game.load_saved_game(stored_state, game_number)
+      load_game
     when "3"
-      puts Dir.entries("games")
-      puts "Just enter the game number, or \"c\" to cancel."
-      game_number = gets.chomp
-      exit if game_number == "c"
-      puts "deleting game #{game_number}..."
-      File.delete("games/game#{game_number}")
-      sleep 2
-      puts "Game #{game_number} deleted!"
-      sleep 2
-      choice_menu
+      delete_game
     end
   end
+
+  def load_game
+    puts Dir.entries("games")
+    puts "Just enter the game number, or \"c\" to cancel."
+    game_number = gets.chomp
+    exit if game_number == "c"
+    stored_state = YAML.load(File.read("games/game#{game_number}"))
+    stored_state.load_saved_game
+  end
+
+  def delete_game
+    puts Dir.entries("games")
+    puts "Just enter the game number, or \"c\" to cancel."
+    game_number = gets.chomp
+    exit if game_number == "c"
+    puts "deleting game #{game_number}..."
+    File.delete("games/game#{game_number}")
+    sleep 1
+    puts "Game #{game_number} deleted!"
+    sleep 1
+    choice_menu
+  end
+
 end
 
 x = Game.new

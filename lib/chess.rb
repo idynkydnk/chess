@@ -3,7 +3,7 @@ require_relative 'board'
 require 'yaml'
 
 class Chess
-  attr_accessor :player_one, :player_two, :board, :current_player
+  attr_accessor :player_one, :player_two, :board, :current_player, :game_number
 
   def initialize
     @board = Board.new
@@ -13,8 +13,24 @@ class Chess
   end
 
   def play
+    clear_screen
     get_players
     pick_colors
+    loop do
+      @board.print_board
+      winner_message if @board.checkmate?(@current_player) 
+      colors_message
+      turn_message
+      check_message if @board.check?(@current_player)
+      save_options_message
+      get_move
+      switch_players
+      clear_screen
+    end
+  end
+
+  def load_saved_game
+    clear_screen
     loop do
       @board.print_board
       winner_message if @board.checkmate?(@current_player) 
@@ -91,6 +107,8 @@ class Chess
       if !File.exist?("games/game#{x}")
         filename = "games/game#{x}"
         File.open(filename, 'w') { |f| f.write(YAML.dump(self)) }
+        puts "Game saved as game#{x}"
+        sleep 2
         exit
       end
     end
