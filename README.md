@@ -16,7 +16,7 @@
 
 <p><a href="/screenshots/screen1.png" target="_blank"><img src="/screenshots/screen1.png" alt="" style="max-width:100%;"></a></p>
 
-<a href="/screenshots/screen1.png"></a>
+<a href="/screenshots/screen2.png"></a>
 
 <img src="/screenshots/screen1.png" alt="" style="max-width:100%;">
 
