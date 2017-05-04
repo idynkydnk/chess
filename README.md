@@ -6,17 +6,12 @@
 
 <p>Only legal chess moves are allowed. If a player is in check, they must make a move that will not leave them in check. The game ends when a player is in checkmate.</p>
 
-<p><a href="/screenshots/screen1.png" target="_blank"><img src="/screenshots/screen1.png" alt="" style="max-width:100%;"></a></p>
-
-<p><a href="/screenshots/screen1.png" target="_blank"><img src="/screenshots/screen1.png" alt="" style="max-width:100%;"></a></p>
-
-<p><a href="/screenshots/screen1.png" target="_blank"><img src="/screenshots/screen1.png" alt="" style="max-width:100%;"></a></p>
-
-<p><a href="/screenshots/screen1.png" target="_blank"><img src="/screenshots/screen1.png" alt="" style="max-width:100%;"></a></p>
-
-<p><a href="/screenshots/screen1.png" target="_blank"><img src="/screenshots/screen1.png" alt="" style="max-width:100%;"></a></p>
-
-<a href="/screenshots/screen2.png"></a>
-
 <img src="/screenshots/screen1.png" alt="" style="max-width:100%;">
 
+<img src="/screenshots/screen2.png" alt="" style="max-width:100%;">
+
+<img src="/screenshots/screen3.png" alt="" style="max-width:100%;">
+
+<img src="/screenshots/screen4.png" alt="" style="max-width:100%;">
+
+<img src="/screenshots/screen5.png" alt="" style="max-width:100%;">
