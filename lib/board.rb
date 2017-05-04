@@ -22,7 +22,7 @@ class Board
     end_y = move[4].to_i - 1
     piece = @grid[start_x][start_y]
     end_piece = @grid[end_x][end_y]
-    if piece.color == player.color &&
+    if piece != " " && piece.color == player.color &&
         legal_move?(start_x, start_y, end_x, end_y) &&
         piece.clear_path?(@grid, end_x, end_y)
       @grid[end_x][end_y] = @grid[start_x][start_y]
